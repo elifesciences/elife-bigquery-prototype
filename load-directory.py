@@ -51,4 +51,4 @@ def import_directory_into_big_query(directory, big_query_dataset_name, big_query
 
 if __name__ == '__main__':
     directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'json')
-    import_directory_into_big_query(directory, 'articles',  'snippets')
+    import_directory_into_big_query(directory, 'articles',  'snippets_staging')
