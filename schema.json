@@ -1,0 +1,342 @@
+[
+    {
+        "name": "status",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "id",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "version",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "type",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "doi",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "authorLine",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "title",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "published",
+        "type": "TIMESTAMP",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "versionDate",
+        "type": "TIMESTAMP",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "volume",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "elocationId",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "pdf",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "subjects",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+            {
+                "name": "id",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "name",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "abstract",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "doi",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "content",
+                "type": "RECORD",
+                "mode": "REPEATED",
+                "fields": [
+                    {
+                        "name": "type",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "text",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "copyright",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "license",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "holder",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "statement",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "authors",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+            {
+                "name": "type",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "affiliations",
+                "type": "RECORD",
+                "mode": "REPEATED",
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "STRING",
+                        "mode": "REPEATED"
+                    },
+                    {
+                        "name": "address",
+                        "type": "RECORD",
+                        "mode": "NULLABLE",
+                        "fields": [
+                            {
+                                "name": "formatted",
+                                "type": "STRING",
+                                "mode": "REPEATED"
+                            },
+                            {
+                                "name": "components",
+                                "type": "RECORD",
+                                "mode": "NULLABLE",
+                                "fields": [
+                                    {
+                                        "name": "locality",
+                                        "type": "STRING",
+                                        "mode": "REPEATED"
+                                    },
+                                    {
+                                        "name": "country",
+                                        "type": "STRING",
+                                        "mode": "NULLABLE"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "emailAddresses",
+                "type": "STRING",
+                "mode": "REPEATED"
+            },
+            {
+                "name": "contribution",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "competingInterests",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "funding",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "awards",
+                "type": "RECORD",
+                "mode": "REPEATED",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "source",
+                        "type": "RECORD",
+                        "mode": "NULLABLE",
+                        "fields": [
+                            {
+                                "name": "funderId",
+                                "type": "STRING",
+                                "mode": "NULLABLE"
+                            },
+                            {
+                                "name": "name",
+                                "type": "STRING",
+                                "mode": "REPEATED"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "recipients",
+                        "type": "RECORD",
+                        "mode": "REPEATED",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "type": "STRING",
+                                "mode": "NULLABLE"
+                            },
+                            {
+                                "name": "name",
+                                "type": "RECORD",
+                                "mode": "NULLABLE",
+                                "fields": [
+                                    {
+                                        "name": "preferred",
+                                        "type": "STRING",
+                                        "mode": "NULLABLE"
+                                    },
+                                    {
+                                        "name": "index",
+                                        "type": "STRING",
+                                        "mode": "NULLABLE"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "awardId",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            },
+            {
+                "name": "statement",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "additionalFiles",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+            {
+                "name": "doi",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "id",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "label",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "title",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "mediaType",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "uri",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "filename",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "impactStatement",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "researchOrganisms",
+        "type": "STRING",
+        "mode": "REPEATED"
+    },
+    {
+        "name": "ethics",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+            {
+                "name": "type",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "text",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    }
+]
