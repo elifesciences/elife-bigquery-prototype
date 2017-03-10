@@ -6,10 +6,11 @@ from pprint import pprint
 from google.cloud import bigquery
 
 def write_to_file(filename, json_data):
-    with open(filename, 'w', encoding="utf-8") as snippet_file:
+    with open(filename, 'a', encoding="utf-8") as snippet_file:
         json.dump(json_data, snippet_file)
+        snippet_file.write('\n')
 
-def load_data_from_file(dataset_name, table_name, source_file_name):
+def upload_to_bigquery_from_file(dataset_name, table_name, source_file_name):
     bigquery_client = bigquery.Client()
     dataset = bigquery_client.dataset(dataset_name)
     table = dataset.table(table_name)
@@ -37,17 +38,28 @@ def wait_for_job(job, source_file_name):
         time.sleep(1)
 
 def import_directory_into_big_query(directory, big_query_dataset_name, big_query_table_name):
+    count = 0
+    number_of_files_made = 0
+    split_every = 5
+    snippet_filename = '0.snippet.json'
+
     for filename in os.listdir(directory):
         if filename.endswith('.xml.json'):
+            count += 1
             json_filename = os.path.join(directory, filename)
-            snippet_filename = json_filename + '.snippet.json'
+
+            if count % split_every == 0:
+                upload_to_bigquery_from_file(big_query_dataset_name, big_query_table_name, snippet_filename)
+                snippet_filename = str(count) + '.snippet.json'
+
             with open(json_filename) as json_file:
                 article = json.load(json_file)
                 write_to_file(snippet_filename, article["snippet"])
-                load_data_from_file(big_query_dataset_name, big_query_table_name, snippet_filename)
+
             continue
         else:
             continue
+
 
 if __name__ == '__main__':
     directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'json')
