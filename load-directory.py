@@ -11,6 +11,7 @@ def write_to_file(filename, json_data):
         snippet_file.write('\n')
 
 def upload_to_bigquery_from_file(dataset_name, table_name, source_file_name):
+    print('Uploading ' + source_file_name + ' to ' + dataset_name + '.' + table_name)
     bigquery_client = bigquery.Client()
     dataset = bigquery_client.dataset(dataset_name)
     table = dataset.table(table_name)
@@ -29,6 +30,7 @@ def upload_to_bigquery_from_file(dataset_name, table_name, source_file_name):
 
 
 def wait_for_job(job, source_file_name):
+    print('Waiting for job to load...')
     while True:
         job.reload()
         if job.state == 'DONE':
@@ -60,6 +62,8 @@ def import_directory_into_big_query(directory, big_query_dataset_name, big_query
         else:
             continue
 
+    # always upload the last one
+    upload_to_bigquery_from_file(big_query_dataset_name, big_query_table_name, snippet_filename)
 
 if __name__ == '__main__':
     directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'json')
