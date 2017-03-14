@@ -1,6 +1,7 @@
 import json
 import os
 import time
+import argparse
 from pprint import pprint
 
 from google.cloud import bigquery
@@ -66,5 +67,17 @@ def import_directory_into_big_query(directory, big_query_dataset_name, big_query
     upload_to_bigquery_from_file(big_query_dataset_name, big_query_table_name, snippet_filename)
 
 if __name__ == '__main__':
-    directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'json')
-    import_directory_into_big_query(directory, 'articles',  'snippets')
+
+    #usage: -s json -d articles -t snippets
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-s", "--source", help="a directory contain json files")
+    parser.add_argument("-d", "--dataset", help="the destination dataset")
+    parser.add_argument("-t", "--table", help="the destination table")
+
+    args = parser.parse_args()
+    source_directory = args.source
+    destination_dataset = args.dataset
+    desitnation_table = args.table
+
+    directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), source_directory)
+    import_directory_into_big_query(directory, destination_dataset,  desitnation_table)
