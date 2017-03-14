@@ -228,35 +228,6 @@
                         ]
                     },
                     {
-                        "name": "recipients",
-                        "type": "RECORD",
-                        "mode": "REPEATED",
-                        "fields": [
-                            {
-                                "name": "type",
-                                "type": "STRING",
-                                "mode": "NULLABLE"
-                            },
-                            {
-                                "name": "name",
-                                "type": "RECORD",
-                                "mode": "NULLABLE",
-                                "fields": [
-                                    {
-                                        "name": "preferred",
-                                        "type": "STRING",
-                                        "mode": "NULLABLE"
-                                    },
-                                    {
-                                        "name": "index",
-                                        "type": "STRING",
-                                        "mode": "NULLABLE"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
                         "name": "awardId",
                         "type": "STRING",
                         "mode": "NULLABLE"
