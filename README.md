@@ -1,6 +1,11 @@
 # elife-bigquery-prototype
 Various scripts and schema for prototyping eLife JSON data in Google BigQuery
 
+This is an attempt by eLife to easily add summary information about published
+eLife articles to Google BigQuery for the purposes of generating analytics.
+
+It is intended to work with eLife JSON [https://github.com/elifesciences/elife-article-json]
+
 ## Uploading Article Snippets to BigQuery
 The script `load_directory.py` will extract `snippet` elements from eLife JSON
 files, batch them into line delimted JSON files (default is 500 per file) and
