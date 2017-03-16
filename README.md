@@ -9,7 +9,7 @@ attempt to upload them to the specific Google BigQuery table.
 Each batched file creates a new import job on BigQuery and the script waits for
 the job to return a result before attempting the next batch.
 
-##Usage
+## Usage
 You need to install and authenticate `gcloud` [https://cloud.google.com/sdk/]
 for this script to work. The most simple method is to authenticate locally with
 a personal Google account using OAuth but servers will require an appropriate
